@@ -26,7 +26,10 @@ function cn(...inputs: ClassValue[]) {
 const MODELS = [
   { id: 'gemini-3-flash-preview', name: 'Gemini 3 Flash', description: 'Fast and efficient for most tasks' },
   { id: 'gemini-3.1-pro-preview', name: 'Gemini 3.1 Pro', description: 'Advanced reasoning and complex tasks' },
-  { id: 'gemini-2.5-flash-lite-latest', name: 'Gemini Flash Lite', description: 'Lightweight and fast' },
+  { id: 'gemini-2.5-flash', name: 'Gemini 2.5 Flash', description: 'Balanced performance and speed' },
+  { id: 'gemini-2.5-flash-lite-latest', name: 'Gemini Flash Lite', description: 'Lightweight and extremely fast' },
+  { id: 'gemini-3-pro-image-preview', name: 'Gemini 3 Pro Image', description: 'Optimized for image-related tasks' },
+  { id: 'gemini-3.1-flash-image-preview', name: 'Gemini 3.1 Flash Image', description: 'High-quality image generation' },
 ];
 
 export default function App() {
@@ -38,7 +41,7 @@ export default function App() {
   
   // Config state
   const [selectedModel, setSelectedModel] = useState(MODELS[0].id);
-  const [customApiKey, setCustomApiKey] = useState('');
+  const [customApiKey, setCustomApiKey] = useState(process.env.GEMINI_API_KEY || '');
   const [systemInstruction, setSystemInstruction] = useState('You are a helpful and professional AI assistant.');
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
